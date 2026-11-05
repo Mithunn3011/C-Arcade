@@ -33,20 +33,26 @@ int main(){
         printf("Ton Essai : ");
         scanf("%d,", &proposition);
         int r = comparer(proposition, nb_secret);
-        if (r == -1) {
+        if (r == 1) {
             printf("Plus petit !\n");
         }
-        else if (r == 1) {
+        else if (r == -1) {
             printf("Plus grand !\n");
+        }
+        if (proposition < min){
+            printf("C'est plus petit que l'intervalle choisi");
+        }
+        else if (proposition > max){
+            printf("C'est plus grand que l'intervalle choisi");
         }
         t +=1;
     } while (proposition != nb_secret);
     printf("Trouvé !\n");
     if (t <= 5){
-        printf("Devin !");
+        printf("Devin !\n");
     } else if (t <=8){
-        printf("Pas Mal !");
+        printf("Pas Mal !\n");
     } else {
-        printf("Tu va y arriver !");
+        printf("Tu va y arriver !\n");
     }
 }
