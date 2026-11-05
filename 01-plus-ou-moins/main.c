@@ -23,11 +23,20 @@ int main(){
     int max;
     int proposition;
     int t=0;
+    int mode;
     printf("Bienvenue au Jeu : Plus ou Moins\n");
-    printf("Choisissez le minumum :");
-    scanf("%d", &min);
-    printf("Choisissez le maximum :");
-    scanf("%d", &max);
+    printf("Choisissez le mode jeu [Simple (0) ou Difficile (1)] : ");
+    scanf("%d",&mode);
+    if (mode == 0) {
+        printf("Choisissez le minumum :");
+        scanf("%d", &min);
+        printf("Choisissez le maximum :");
+        scanf("%d", &max);
+    }
+    else if (mode == 1){
+        min = 0;
+        max = 1000; 
+    }
     int nb_secret = tirer_nombre(min,max);
     do {
         printf("Ton Essai : ");
@@ -46,6 +55,10 @@ int main(){
             printf("C'est plus grand que l'intervalle choisi");
         }
         t +=1;
+        if (mode == 1 && t == 10) {
+            printf("Perdu !\n");
+            return 0;
+        }
     } while (proposition != nb_secret);
     printf("Trouvé !\n");
     if (t <= 5){
@@ -55,4 +68,5 @@ int main(){
     } else {
         printf("Tu va y arriver !\n");
     }
+    
 }
